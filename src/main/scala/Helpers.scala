@@ -2,7 +2,7 @@ package org.abstractbinary.unshuffle
 
 import _root_.android.app.{Activity, Dialog, Fragment}
 import _root_.android.view.View
-import _root_.android.widget.Toast
+import _root_.android.widget.{AdapterView, Toast}
 
 trait ToastableFragment extends Fragment {
   def toast(text : String) = {
@@ -24,6 +24,17 @@ trait ViewOnClickListener {
     new View.OnClickListener {
       def onClick(view : View) {
         f(view)
+      }
+    }
+  }
+}
+
+trait AdapterViewOnItemClickListener {
+  // We use functions instead of @OnClickListeners@.
+  implicit def function2AdapterViewOnItemClickListener(f : (AdapterView[_], View, Int, Long)  => Unit) = {
+    new AdapterView.OnItemClickListener {
+      def onItemClick(adapterView : AdapterView[_], view : View, position : Int, id : Long) {
+        f(adapterView, view, position, id)
       }
     }
   }
