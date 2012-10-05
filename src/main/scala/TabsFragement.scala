@@ -85,7 +85,7 @@ class TabsFragment extends Fragment {
       val tabsAdapter = new TabsAdapter(getActivity, tabHost, viewPager)
 
       tabsAdapter.addTab(tabHost.newTabSpec("numbers").setIndicator("Numbers"),
-                         classOf[Fragment], null);
+                         classOf[NumbersFragment], null);
       tabsAdapter.addTab(tabHost.newTabSpec("cards").setIndicator("Cards"),
                          classOf[Fragment], null);
 
