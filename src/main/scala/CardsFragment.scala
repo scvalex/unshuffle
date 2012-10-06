@@ -19,33 +19,49 @@ case object Diamonds extends Suite {
   override def toString = "\u2666"
 }
 
+case class Card(number : Int, suite : Suite) {
+  override def toString = {
+    val numberString =
+      if (number == 1)
+        "A"
+      else if (number <= 10)
+        number.toString
+      else if (number == 11)
+        "J"
+      else if (number == 12)
+        "Q"
+      else if (number == 13)
+        "K"
+      else
+        "Invalid card number: %d".format(number)
+    numberString + suite.toString
+  }
+}
+
 class CardsFragment extends Fragment
   with ToastableFragment
   with AdapterViewOnItemClickListener
 {
   val suites = List(Clubs, Spades, Hearts, Diamonds)
 
-  def handleCardClicked(card : String) : Unit = {
-    toast("%s clicked".format(card))
+  val cards = {
+    val cards = new java.util.ArrayList[Card](52)
+    for (num <- 1 to 13;
+         suite <- suites) {
+      cards.add(new Card(num, suite))
+    }
+    cards
+  }
+
+  def handleCardClicked(card : Card) : Unit = {
+    toast("%s clicked".format(card.toString))
   }
 
   override def onCreateView(inflater : LayoutInflater,
                             container : ViewGroup,
                             savedInstanceState : Bundle) : View =
   {
-    val cards = new java.util.ArrayList[String](52)
-    for (suite <- suites) {
-      cards.add("A" + suite)
-    }
-    for (num <- 2 to 10;
-         suite <- suites) {
-      cards.add(num.toString + suite)
-    }
-    for (num <- List("J", "Q", "K");
-         suite <- suites) {
-      cards.add(num + suite)
-    }
-    val adapter = new ArrayAdapter[String](getActivity, R.layout.grid_cell, cards)
+    val adapter = new ArrayAdapter[Card](getActivity, R.layout.grid_cell, cards)
     val grid = new GridView(getActivity)
     grid.setAdapter(adapter)
     grid.setNumColumns(4)
