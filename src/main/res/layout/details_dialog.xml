@@ -4,11 +4,40 @@
     android:layout_height="fill_parent"
     android:padding="10dp">
 
-  <Button
-      android:id="@+id/new_item_done"
+  <TextView
+      android:id="@+id/red_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignParentRight="true"
-      android:text="@string/done" />
+      android:layout_alignParentTop="true"
+      android:layout_alignParentLeft="true"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/red" />
+
+  <TextView
+      android:id="@+id/red_count"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/red_label"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:paddingLeft="6dip" />
+
+  <TextView
+      android:id="@+id/black_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/red_label"
+      android:layout_alignParentLeft="true"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/black" />
+
+  <TextView
+      android:id="@+id/black_count"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/red_label"
+      android:layout_toRightOf="@id/black_label"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:paddingLeft="6dip" />
+
 
 </RelativeLayout>

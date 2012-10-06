@@ -74,12 +74,15 @@ class DetailsDialog(card : Card, number : Int, cardInfo : CardInfo) extends Dial
                             container : ViewGroup,
                             savedInstanceState : Bundle) : View =
   {
-    inflater.inflate(R.layout.details_dialog, container, false)
+    val view = inflater.inflate(R.layout.details_dialog, container, false)
+    view.findView(TR.red_count).setText(cardInfo.red.toString)
+    view.findView(TR.black_count).setText(cardInfo.black.toString)
+    view
   }
 
   override def onStart = {
     super.onStart
-    getDialog.setTitle("%d/%s".format(number, card.toString));
+    getDialog.setTitle("%d / %s".format(number, card.toString));
   }
 }
 
