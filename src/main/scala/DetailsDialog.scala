@@ -7,7 +7,7 @@ import _root_.android.view.{LayoutInflater, View, ViewGroup}
 
 import TypedResource._
 
-case class CardInfo(c : Int, h : Int, s : Int, d : Int, red : Int, black : Int)
+case class CardInfo(clubs : Int, hearts : Int, spades : Int, diamonds : Int, red : Int, black : Int)
 
 /* Table:
           C  H  S  D    Red  Black
@@ -77,6 +77,10 @@ class DetailsDialog(card : Card, number : Int, cardInfo : CardInfo) extends Dial
     val view = inflater.inflate(R.layout.details_dialog, container, false)
     view.findView(TR.red_count).setText(cardInfo.red.toString)
     view.findView(TR.black_count).setText(cardInfo.black.toString)
+    view.findView(TR.clubs_count).setText(cardInfo.clubs.toString)
+    view.findView(TR.spades_count).setText(cardInfo.spades.toString)
+    view.findView(TR.hearts_count).setText(cardInfo.hearts.toString)
+    view.findView(TR.diamonds_count).setText(cardInfo.diamonds.toString)
     view
   }
 

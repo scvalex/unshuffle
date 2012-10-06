@@ -1,6 +1,10 @@
 <resources>
   <string name="app_name">Unshuffle</string>
   <string name="black">Black:</string>
+  <string name="clubs">Clubs:</string>
+  <string name="diamonds">Diamonds:</string>
   <string name="done">Done</string>
+  <string name="hearts">Hearts:</string>
   <string name="red">Red:</string>
+  <string name="spades">Spades:</string>
 </resources>

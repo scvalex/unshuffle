@@ -39,5 +39,76 @@
       android:textAppearance="?android:attr/textAppearanceLarge"
       android:paddingLeft="6dip" />
 
+  <TextView
+      android:id="@+id/clubs_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/black_label"
+      android:layout_alignParentLeft="true"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/clubs" />
+
+  <TextView
+      android:id="@+id/clubs_count"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/black_label"
+      android:layout_toRightOf="@id/clubs_label"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:paddingLeft="6dip" />
+
+  <TextView
+      android:id="@+id/spades_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/clubs_label"
+      android:layout_alignParentLeft="true"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/spades" />
+
+  <TextView
+      android:id="@+id/spades_count"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/clubs_label"
+      android:layout_toRightOf="@id/spades_label"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:paddingLeft="6dip" />
+
+  <TextView
+      android:id="@+id/hearts_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/spades_label"
+      android:layout_alignParentLeft="true"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/hearts" />
+
+  <TextView
+      android:id="@+id/hearts_count"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/spades_label"
+      android:layout_toRightOf="@id/hearts_label"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:paddingLeft="6dip" />
+
+  <TextView
+      android:id="@+id/diamonds_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/hearts_label"
+      android:layout_alignParentLeft="true"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/diamonds" />
+
+  <TextView
+      android:id="@+id/diamonds_count"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/hearts_label"
+      android:layout_toRightOf="@id/diamonds_label"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:paddingLeft="6dip" />
 
 </RelativeLayout>
