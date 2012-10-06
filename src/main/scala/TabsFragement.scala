@@ -87,7 +87,7 @@ class TabsFragment extends Fragment {
       tabsAdapter.addTab(tabHost.newTabSpec("numbers").setIndicator("Numbers"),
                          classOf[NumbersFragment], null);
       tabsAdapter.addTab(tabHost.newTabSpec("cards").setIndicator("Cards"),
-                         classOf[Fragment], null);
+                         classOf[CardsFragment], null);
 
       view
     }
