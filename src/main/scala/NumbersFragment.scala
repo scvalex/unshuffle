@@ -14,8 +14,10 @@ class NumbersFragment extends Fragment
 
   def showDetailsDialog(num : Int) : Unit = {
     val ft = getFragmentManager.beginTransaction
-    val dialog = DetailsDialog.forNumber(num)
-    dialog.show(ft, "number: %d".format(num))
+    DetailsDialog.forNumber(num) match {
+      case Some(dialog) => dialog.show(ft, "number: %d".format(num))
+      case None => toast("No such number: %d".format(num.toString))
+    }
   }
 
   def handleNumberClicked(num : Int) : Unit = {

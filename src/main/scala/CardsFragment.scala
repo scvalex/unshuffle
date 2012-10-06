@@ -18,15 +18,17 @@ class CardsFragment extends Fragment
     val cards = new java.util.ArrayList[Card](52)
     for (num <- 1 to 13;
          suite <- suites) {
-      cards.add(new Card(num, suite))
+      cards.add(Card(num, suite))
     }
     cards
   }
 
   def showDetailsDialog(card : Card) : Unit = {
     val ft = getFragmentManager.beginTransaction
-    val dialog = DetailsDialog.forCard(card)
-    dialog.show(ft, "card: %s".format(card.toString))
+    DetailsDialog.forCard(card) match {
+      case Some(dialog) => dialog.show(ft, "card: %s".format(card.toString))
+      case None => toast("No such card: %s".format(card.toString))
+    }
   }
 
   def handleCardClicked(card : Card) : Unit = {
