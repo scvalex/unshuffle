@@ -25,6 +25,8 @@ class TabsAdapter(activity : Activity, tabHost : TabHost, pager : ViewPager)
   with TabHost.OnTabChangeListener
   with ViewPager.OnPageChangeListener
 {
+  val TAG = "TabsAdapter"
+
   var tabs = List[TabInfo]()
 
   tabHost.setOnTabChangedListener(this)
@@ -35,7 +37,7 @@ class TabsAdapter(activity : Activity, tabHost : TabHost, pager : ViewPager)
     tabSpec.setContent(new DummyTabFactory(activity))
 
     val info = TabInfo(tabSpec.getTag, klass, args)
-    tabs = info :: tabs
+    tabs = tabs :+ info
     tabHost.addTab(tabSpec)
     notifyDataSetChanged
   }
@@ -46,6 +48,7 @@ class TabsAdapter(activity : Activity, tabHost : TabHost, pager : ViewPager)
 
   override def getItem(position : Int) : Fragment = {
     val info = tabs(position)
+    Log.i(TAG, "getting tab %s at %d".format(info.klass.getName, position))
     Fragment.instantiate(activity, info.klass.getName, info.args)
   }
 
