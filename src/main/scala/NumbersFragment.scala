@@ -2,6 +2,7 @@ package org.abstractbinary.unshuffle
 
 import _root_.android.app.Fragment
 import _root_.android.os.Bundle
+import _root_.android.util.Log
 import _root_.android.view.{LayoutInflater, View, ViewGroup}
 import _root_.android.widget.{AdapterView, ArrayAdapter, GridView}
 
@@ -9,8 +10,17 @@ class NumbersFragment extends Fragment
   with ToastableFragment
   with AdapterViewOnItemClickListener
 {
+  val TAG = "NumbersFragment"
+
+  def showDetailsDialog(num : Int) : Unit = {
+    val ft = getFragmentManager.beginTransaction
+    val dialog = DetailsDialog.forNumber(num)
+    dialog.show(ft, "number: %d".format(num))
+  }
+
   def handleNumberClicked(num : Int) : Unit = {
-    toast("%d clicked".format(num))
+    Log.i(TAG, "%d clicked".format(num))
+    showDetailsDialog(num)
   }
 
   override def onCreateView(inflater : LayoutInflater,

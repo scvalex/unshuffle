@@ -2,46 +2,16 @@ package org.abstractbinary.unshuffle
 
 import _root_.android.app.Fragment
 import _root_.android.os.Bundle
+import _root_.android.util.Log
 import _root_.android.view.{LayoutInflater, View, ViewGroup}
 import _root_.android.widget.{AdapterView, ArrayAdapter, GridView}
-
-sealed abstract class Suite
-case object Clubs extends Suite {
-  override def toString = "\u2663"
-}
-case object Spades extends Suite {
-  override def toString = "\u2660"
-}
-case object Hearts extends Suite {
-  override def toString = "\u2665"
-}
-case object Diamonds extends Suite {
-  override def toString = "\u2666"
-}
-
-case class Card(number : Int, suite : Suite) {
-  override def toString = {
-    val numberString =
-      if (number == 1)
-        "A"
-      else if (number <= 10)
-        number.toString
-      else if (number == 11)
-        "J"
-      else if (number == 12)
-        "Q"
-      else if (number == 13)
-        "K"
-      else
-        "Invalid card number: %d".format(number)
-    numberString + suite.toString
-  }
-}
 
 class CardsFragment extends Fragment
   with ToastableFragment
   with AdapterViewOnItemClickListener
 {
+  val TAG = "CardsFragment"
+
   val suites = List(Clubs, Spades, Hearts, Diamonds)
 
   val cards = {
@@ -53,8 +23,15 @@ class CardsFragment extends Fragment
     cards
   }
 
+  def showDetailsDialog(card : Card) : Unit = {
+    val ft = getFragmentManager.beginTransaction
+    val dialog = DetailsDialog.forCard(card)
+    dialog.show(ft, "card: %s".format(card.toString))
+  }
+
   def handleCardClicked(card : Card) : Unit = {
-    toast("%s clicked".format(card.toString))
+    Log.i(TAG, "%s clicked".format(card.toString))
+    showDetailsDialog(card)
   }
 
   override def onCreateView(inflater : LayoutInflater,
