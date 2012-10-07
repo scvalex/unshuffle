@@ -1,3 +1,5 @@
+v := 0.2
+
 all: install
 
 .PHONY: all install build clean push p market
@@ -23,3 +25,6 @@ p:
 market:
 	sbt android:package-release
 	sbt android:prepare-market
+	jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore ~/.keystore target/unshuffle-$v-market.apk scvalex
+	jarsigner -verify target/unshuffle-$v-market.apk
+	zipalign -v 4 target/unshuffle-$v-market.apk unshuffle-$v-market.apk
