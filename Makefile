@@ -5,7 +5,7 @@ all: install
 .PHONY: all install build clean push p market
 
 install: build
-	adb -s 36335A130C1900EC install -r target/unshuffle-0.1.apk
+	adb -s 36335A130C1900EC install -r target/unshuffle-$v.apk
 
 build:
 	sbt android:package-debug

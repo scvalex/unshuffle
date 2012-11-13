@@ -20,7 +20,7 @@ object General {
     TypedResources.settings ++ Seq (
       compileOrder := CompileOrder.JavaThenScala
     ) ++ Seq(
-      proguardOption in Android := "-keep class scala.Function1"
+      proguardOption in Android := "-keep class scala.Function1 -keep class scala.Function4 -keep class scala.Tuple2 -keep class android.support.v4.view.ViewPager -keep class scala.collection.immutable.List"
     ) ++
     AndroidMarketPublish.settings ++ Seq (
       keyalias in Android := "scvalex"
