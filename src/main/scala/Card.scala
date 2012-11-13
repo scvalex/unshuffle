@@ -14,21 +14,33 @@ case object Diamonds extends Suite {
   override def toString = "\u2666"
 }
 
-case class Card(number : Int, suite : Suite) {
+case class Card(_number : Int, _suite : Suite) {
   override def toString = {
     val numberString =
-      if (number == 1)
+      if (_number == 1)
         "A"
-      else if (number <= 10)
-        number.toString
-      else if (number == 11)
+      else if (_number <= 10)
+        _number.toString
+      else if (_number == 11)
         "J"
-      else if (number == 12)
+      else if (_number == 12)
         "Q"
-      else if (number == 13)
+      else if (_number == 13)
         "K"
       else
-        "Invalid card number: %d".format(number)
+        "Invalid card number: %d".format(_number)
     numberString + suite.toString
   }
+
+  def isRed : Boolean =
+    _suite match {
+      case Hearts   => true
+      case Diamonds => true
+      case Clubs    => false
+      case Spades   => false
+    }
+
+  def isBlack : Boolean = !isRed
+
+  def suite = _suite
 }
