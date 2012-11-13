@@ -12,6 +12,7 @@ class CardsFragment extends Fragment
 {
   val TAG = "CardsFragment"
 
+  // Make these things private
   val suites = List(Clubs, Spades, Hearts, Diamonds)
 
   val cards = {
