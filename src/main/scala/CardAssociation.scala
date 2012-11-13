@@ -4,7 +4,7 @@ import scala.collection.mutable.HashMap
 
 case class CardInfo(clubs : Int, hearts : Int, spades : Int, diamonds : Int, red : Int, black : Int)
 
-class CardAssociation(cards : List[Card]) {
+class CardAssociation(_cards : List[Card]) {
   private val assocs = HashMap[(Card, Int), CardInfo]()
   private var i = 1
   private var reds = 0
@@ -13,7 +13,7 @@ class CardAssociation(cards : List[Card]) {
   private var spades = 0
   private var diamonds = 0
   private var clubs = 0
-  cards.foreach((card : Card) => {
+  _cards.foreach((card : Card) => {
     if (card.isRed)
       reds += 1
     if (card.isBlack)

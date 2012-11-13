@@ -8,7 +8,7 @@ import _root_.android.view.{LayoutInflater, View, ViewGroup}
 import TypedResource._
 
 // A dialog that gathers and validates the information for a new item.
-class DetailsDialog(card : Card, number : Int, cardInfo : CardInfo) extends DialogFragment
+class DetailsDialog(_card : Card, _number : Int, _cardInfo : CardInfo) extends DialogFragment
   with ViewOnClickListener
   with ToastableFragment
 {
@@ -17,18 +17,18 @@ class DetailsDialog(card : Card, number : Int, cardInfo : CardInfo) extends Dial
                             savedInstanceState : Bundle) : View =
   {
     val view = inflater.inflate(R.layout.details_dialog, container, false)
-    view.findView(TR.red_count).setText(cardInfo.red.toString)
-    view.findView(TR.black_count).setText(cardInfo.black.toString)
-    view.findView(TR.clubs_count).setText(cardInfo.clubs.toString)
-    view.findView(TR.spades_count).setText(cardInfo.spades.toString)
-    view.findView(TR.hearts_count).setText(cardInfo.hearts.toString)
-    view.findView(TR.diamonds_count).setText(cardInfo.diamonds.toString)
+    view.findView(TR.red_count).setText(_cardInfo.red.toString)
+    view.findView(TR.black_count).setText(_cardInfo.black.toString)
+    view.findView(TR.clubs_count).setText(_cardInfo.clubs.toString)
+    view.findView(TR.spades_count).setText(_cardInfo.spades.toString)
+    view.findView(TR.hearts_count).setText(_cardInfo.hearts.toString)
+    view.findView(TR.diamonds_count).setText(_cardInfo.diamonds.toString)
     view
   }
 
   override def onStart = {
     super.onStart
-    getDialog.setTitle("%d / %s".format(number, card.toString));
+    getDialog.setTitle("%d / %s".format(_number, _card.toString));
   }
 }
 

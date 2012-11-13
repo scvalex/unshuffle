@@ -11,9 +11,9 @@ import _root_.android.widget.{TabHost, TabWidget}
 
 case class TabInfo(tag : String, klass : Class[_], args : Bundle)
 
-class DummyTabFactory(context : Context) extends TabHost.TabContentFactory {
+class DummyTabFactory(_context : Context) extends TabHost.TabContentFactory {
   override def createTabContent(tag : String) : View = {
-    val v = new View(context)
+    val v = new View(_context)
     v.setMinimumWidth(0)
     v.setMinimumHeight(0)
     v
