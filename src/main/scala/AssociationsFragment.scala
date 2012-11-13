@@ -4,9 +4,7 @@ import _root_.android.app.Fragment
 import _root_.android.os.Bundle
 import _root_.android.util.Log
 import _root_.android.view.{LayoutInflater, View, ViewGroup}
-import _root_.android.widget.{AdapterView, ArrayAdapter, ListView}
-
-import scala.collection.JavaConversions._
+import _root_.android.widget.ListView
 
 class AssociationsFragment extends Fragment
   with ToastableFragment
@@ -18,7 +16,7 @@ class AssociationsFragment extends Fragment
                             container : ViewGroup,
                             savedInstanceState : Bundle) : View =
   {
-    val adapter = new ArrayAdapter[((Card, Int), CardInfo)](getActivity, R.layout.grid_cell, CardAssociation.misas.getAssociations.toList)
+    val adapter = new AssociationsAdapter(getActivity, R.layout.grid_cell, CardAssociation.misas)
     val list = new ListView(getActivity)
     list.setAdapter(adapter)
     list
