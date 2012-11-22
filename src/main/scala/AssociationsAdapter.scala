@@ -13,13 +13,24 @@ class AssociationsAdapter(ctx : Context, id : Int, assocs : CardAssociation)
 
   private val columns = 8
 
+  private val columnHeads = Map(
+    0 -> "#",
+    1 -> "C",
+    2 -> "♣",
+    3 -> "♥",
+    4 -> "♠",
+    5 -> "♦",
+    6 -> "R",
+    7 -> "B"
+  )
+
   def getColumns : Int = columns
 
   def isEnabled(position : Int) : Boolean = true
 
   def areAllItemsEnabled : Boolean = true
 
-  def getCount : Int = assocs.size * columns
+  def getCount : Int = (assocs.size + 1) * columns
 
   def isEmpty : Boolean = assocs.isEmpty
 
@@ -48,20 +59,24 @@ class AssociationsAdapter(ctx : Context, id : Int, assocs : CardAssociation)
     Log.i(TAG, "Getting item at position %d".format(position))
     val numPos = position / columns
     val col = position % columns
-    val cardAss = assocs.find((elem) => {
-      val ((card, num), cardInfo) = elem
-      num == (numPos + 1)
-    })
-    val ((card, num), cardInfo) = cardAss.get
-    col match {
-      case 0 => "%2d.".format(numPos + 1)
-      case 1 => "%3s".format(card.toString)
-      case 2 => "%2d".format(cardInfo.clubs)
-      case 3 => "%2d".format(cardInfo.hearts)
-      case 4 => "%2d".format(cardInfo.spades)
-      case 5 => "%2d".format(cardInfo.diamonds)
-      case 6 => "%2d".format(cardInfo.reds)
-      case 7 => "%2d".format(cardInfo.blacks)
+    if (numPos == 0) {
+      columnHeads(col)
+    } else {
+      val cardAss = assocs.find((elem) => {
+        val ((card, num), cardInfo) = elem
+        num == numPos
+      })
+      val ((card, num), cardInfo) = cardAss.get
+      col match {
+        case 0 => "%2d.".format(numPos)
+        case 1 => "%3s".format(card.toString)
+        case 2 => "%2d".format(cardInfo.clubs)
+        case 3 => "%2d".format(cardInfo.hearts)
+        case 4 => "%2d".format(cardInfo.spades)
+        case 5 => "%2d".format(cardInfo.diamonds)
+        case 6 => "%2d".format(cardInfo.reds)
+        case 7 => "%2d".format(cardInfo.blacks)
+      }
     }
   }
 
