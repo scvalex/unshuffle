@@ -2,7 +2,7 @@ package org.abstractbinary.unshuffle
 
 import scala.collection.mutable.HashMap
 
-case class CardInfo(clubs : Int, hearts : Int, spades : Int, diamonds : Int, red : Int, black : Int)
+case class CardInfo(clubs : Int, hearts : Int, spades : Int, diamonds : Int, reds : Int, blacks : Int)
 
 class CardAssociation(_cards : List[Card]) {
   private val assocs = HashMap[(Card, Int), CardInfo]()
@@ -32,6 +32,10 @@ class CardAssociation(_cards : List[Card]) {
 
   def find(f : Function1[((Card, Int), CardInfo), Boolean]) : Option[((Card, Int), CardInfo)] =
     assocs.find(f)
+
+  def size = assocs.size
+
+  def isEmpty = assocs.isEmpty
 }
 
 object CardAssociation {

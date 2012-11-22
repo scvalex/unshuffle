@@ -6,7 +6,8 @@ import _root_.android.os.Bundle
 import _root_.android.util.Log
 import _root_.android.view.{Menu, MenuItem}
 
-class Unshuffle extends Activity with TypedActivity
+class Unshuffle extends Activity
+  with TypedActivity
   with Toastable
 {
   val TAG = "Unshuffle"

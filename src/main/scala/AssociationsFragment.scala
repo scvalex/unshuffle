@@ -4,7 +4,7 @@ import _root_.android.app.Fragment
 import _root_.android.os.Bundle
 import _root_.android.util.Log
 import _root_.android.view.{LayoutInflater, View, ViewGroup}
-import _root_.android.widget.ListView
+import _root_.android.widget.GridView
 
 class AssociationsFragment extends Fragment
   with ToastableFragment
@@ -17,8 +17,9 @@ class AssociationsFragment extends Fragment
                             savedInstanceState : Bundle) : View =
   {
     val adapter = new AssociationsAdapter(getActivity, R.layout.grid_cell, CardAssociation.misas)
-    val list = new ListView(getActivity)
-    list.setAdapter(adapter)
-    list
+    val grid = new GridView(getActivity)
+    grid.setAdapter(adapter)
+    grid.setNumColumns(adapter.getColumns)
+    grid
   }
 }
