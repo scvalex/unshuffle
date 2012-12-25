@@ -53,7 +53,7 @@ object CardAssociation {
     Card(3, Clubs), Card(3, Hearts), Card(10, Clubs), Card(9, Diamonds),
     Card(12, Spades), Card(3, Spades), Card(3, Diamonds), Card(2, Hearts),
     Card(8, Clubs), Card(2, Spades), Card(11, Clubs), Card(2, Diamonds),
-    Card(8, Hearts), Card(8, Spades), Card(13, Spades), Card(1, Spades),
+    Card(8, Hearts), Card(8, Spades), Card(13, Spades), Card(1, Clubs),
     Card(11, Diamonds), Card(5, Clubs), Card(8, Diamonds), Card(6, Diamonds)
   ))
 }
